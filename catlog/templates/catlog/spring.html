@@ -1,0 +1,53 @@
+{% extends 'layout.html'  %}
+<!--slider block-->
+{% block slider %}
+{% block cat-mini-slider %}
+{{ block.super }}
+{% endblock %}
+{% endblock %}
+<!--end-->
+{% block images_grid %}
+<!--modal-->
+<div class="wrapper">
+<div class="container">
+	<div class="content"  id="grid-container">
+          <div class="about-content-wrapper">
+             <h2 class="about-content-name">Spring pictures</h2>
+         <h4 class="about-content">Browse stunning free stock photos of April showers & May flowers. You'll find fresh piectures of colorful skies, rainy days, spring fashion, budding gardens and Easter imagery in this seasonal collection.
+         </h4>
+    </div>
+        {% for image in spring_url %}
+   		<a class="elem grid-item" href="{{ image.spring_1 }}"  data-lcl-thumb="{{ image.spring_1 }}">
+        	<img  src={{ image.spring_1 }}>
+        </a>
+        {% endfor %}
+   	</div>
+</div>
+<!--endmodal-->
+<!--pagination-->
+                    <div>
+                        <div id="page-container">
+                            <span class="step-links">
+                                {% if spring_url.has_previous %}
+                                    <a id="first-page-tooltip" class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect page-buttons" href="?page=1"><i class="material-icons">first_page</i></a>
+                                    <a id="prev-page-tooltip" class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect page-buttons" href="?page={{ spring_url.previous_page_number }}"><i class="material-icons">chevron_left</i></a>
+                                {% endif %}
+                                <span class="current">
+                                    Page {{ spring_url.number }} of {{ spring_url.paginator.num_pages }}.
+                                </span>
+                                {% if spring_url.has_next %}
+                                    <a id="next-page-tooltip" class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect page-buttons" href="?page={{ spring_url.next_page_number }}"><i class="material-icons">chevron_right</i></a>
+                                    <a  id="last-page-tooltip" class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect page-buttons" href="?page={{ spring_url.paginator.num_pages }}"><i class="material-icons">last_page</i></a>
+                                {% endif %}
+                            </span>
+                     </div>
+                    </div>
+                        <!--tooltips-->
+                        <div class="mdl-tooltip mdl-tooltip--left" data-mdl-for="first-page-tooltip">First Page</div>
+                        <div class="mdl-tooltip mdl-tooltip--top" data-mdl-for="prev-page-tooltip"> Previous Page</div>
+                        <div class="mdl-tooltip mdl-tooltip--top" data-mdl-for="next-page-tooltip"> Next Page</div>
+                        <div class="mdl-tooltip mdl-tooltip--right" data-mdl-for="last-page-tooltip"> Last Page</div>
+                        <!--end-->
+    </div>
+<!--endpagination-->
+{% endblock %}

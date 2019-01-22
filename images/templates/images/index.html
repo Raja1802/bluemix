@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block slider %}
+{{ block.super }}
+{% block cat-mini-slider %}
+{% endblock %}
+{% endblock %}
+{% block images_grid %}
+<!--modal-->
+<div class="container">
+ <a class="top-tags-links" href="#">Latest</a>
+	<div class="content"  id="grid-container">
+        {% for image in data %}
+   		<a class="elem grid-item" href="{{ image.image_url }}" data-lcl-thumb="{{ image.image_url }}">
+        	<img  src={{ image.image_url }}>
+        </a>
+        {% endfor %}
+   	</div>
+</div>
+<!--endmodal-->
+<!--pagination-->
+                    <div>
+                        <div id="page-container">
+                            <span class="step-links">
+                                <span class="current">
+                                    Page {{ data.number }} of {{ data.paginator.num_pages }}.
+                                </span>
+                                {% if data.has_next %}
+                                    <a id="next-page-tooltip" class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect page-buttons" href="{% url 'all_images' %}"><i class="material-icons">chevron_right</i></a>
+                                {% endif %}
+                            </span>
+                     </div>
+                    </div>
+                        <!--tooltips-->
+                        <div class="mdl-tooltip mdl-tooltip--left" data-mdl-for="first-page-tooltip">First Page</div>
+                        <div class="mdl-tooltip mdl-tooltip--top" data-mdl-for="prev-page-tooltip"> Previous Page</div>
+                        <div class="mdl-tooltip mdl-tooltip--top" data-mdl-for="next-page-tooltip"> Next Page</div>
+                        <div class="mdl-tooltip mdl-tooltip--right" data-mdl-for="last-page-tooltip"> Last Page</div>
+                        <!--end-->
+
+<!--endpagination-->
+{% endblock %}

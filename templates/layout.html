@@ -1,0 +1,294 @@
+{% load static  %}
+<html>
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- Custom Style -->
+      <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+      <link href='{% static "css/justified.css" %}' rel="stylesheet">
+      <style>
+      h1 { margin:150px auto 50px auto; text-align:center;}
+      </style>
+      <title>
+        AJAR
+      </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+      <!-- site-icon -->
+      <link rel = "icon" type="image/jpg" href="https://lh3.googleusercontent.com/fXwRuaW0YfgdzScgHMfNFLskIv1Mu8gw0r7dUxWX8xye7HXSBv6EAA7HFN42oveApYXy9Km1Y6jQF40HOWJ1IHq60GrPpivAsk3FzRqlB1tmmiVBtNtDUsbtUiSQfrfdP2pwjyf18g=w2400" >
+      <!-- end -->
+      <!-- flickity slider dependers -->
+      <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+      <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+      <!-- end -->
+    <!-- materialize dependers -->
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+      <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+      <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+      <!-- end -->
+      <!-- static css -->
+      <link rel="stylesheet"  href='{% static "css/style.css" %}' type="text/css">
+      <!-- end -->
+        <!--modal-lightbox-css-->
+
+        <script src="{% static 'lib/jquery.js'%}" type="text/javascript"></script>
+
+        <script src="{%static 'js/lc_lightbox.lite.js'%}" type="text/javascript"></script>
+        <link rel="stylesheet" href="{%static 'css/lc_lightbox.css'%}" />
+
+
+        <!-- SKINS -->
+        <link rel="stylesheet" href="{% static 'skins/dark.css' %}" />
+
+
+        <!-- ASSETS -->
+        <script src="{% static 'lib/AlloyFinger/alloy_finger.min.js' %}" type="text/javascript"></script>
+
+        <!--end-->
+        <style type="text/css">
+        .lcl_fade_oc.lcl_pre_show #lcl_overlay,
+        .lcl_fade_oc.lcl_pre_show #lcl_window,
+        .lcl_fade_oc.lcl_is_closing #lcl_overlay,
+        .lcl_fade_oc.lcl_is_closing #lcl_window {
+            opacity: 0 !important;
+        }
+        .lcl_fade_oc.lcl_is_closing #lcl_overlay {
+            -webkit-transition-delay: .15s !important;
+            transition-delay: .15s !important;
+        }
+        </style>
+    </head>
+    <body>
+    <div class=" mdl-layout mdl-js-layout ">
+        <div class=" mdl-layout mdl-js-layout">
+            <header class="mdl-layout__header ">
+              <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <a href="{% url 'home' %}"><span class="mdl-layout-title">AJAR</span></a>
+                <!-- Add spacer, to align navigation to the right -->
+                <div class="mdl-layout-spacer"></div>
+                <!-- Navigation -->
+                <nav class="mdl-navigation">
+               <a class="menu-tags-links"  href="{% url 'catlog_home' %}">Collections</a>
+               <!--<a class="mdl-button mdl-js-button mdl-button&#45;&#45;icon "  href="#"><i id="upload-button" class="material-icons">cloud_upload</i></a>-->
+
+                    <!--tooltip-->
+                     <div class="mdl-tooltip mdl-tooltip--bottom" data-mdl-for="upload-button">Contribute to our community</div>
+                    <!--end-->
+                  <a id="vertical-drop" href="#">
+                      <button id="menu-lower-right"
+                                class="mdl-button mdl-js-button mdl-button--icon">
+                          <i class="material-icons">more_vert</i>
+                        </button>
+
+                        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="menu-lower-right">
+                           <a href=""> <li class="mdl-menu__item">Terms of Service</li></a>
+                           <a href=""> <li class="mdl-menu__item">Help</li></a>
+
+                        </ul>
+                  </a>
+                 </nav>
+              </div>
+            </header>
+            <div class="mdl-layout__drawer mdl-layout--small-screen-only">
+              <a href="{% url 'home' %}" class=" mini-mdl-layout-title">AJAR</a>
+              <nav class="mdl-navigation mini-mdl-navigation">
+                <a class=" mini-menu-links mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" href="{% url 'catlog_home' %}">collection</a>
+                   <!--<a class=" mini-menu-links mdl-button mdl-js-button mdl-button&#45;&#45;raised mdl-js-ripple-effect" href="#">upload</a>-->
+                  <a class=" mini-menu-links mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" href="#">Terms of Service</a>
+                  <a class=" mini-menu-links mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" href="#">Help</a>
+
+              </nav>
+            </div>
+          </div>
+          <main class="mdl-layout__content">
+
+
+              <!--slider grid-->
+              {% block slider %}
+                <div class = "top-slider">
+                  <div class="inner-layer">
+                    <img class="slider-image" src="https://lh3.googleusercontent.com/aWZIVrq9p8nrvETGz69-MB3kRG_vLtuUV-_hHEF1JgyopLdUzhFDY8uTrlLexJzXH-6d4hAJ0gcu2r6UrUaZTApI5mHQ6VqnC-DipZ-efKAqH_NdZZHHvjDThsSTfj95HaCy0yKw5p8=w2400" alt="tulip" />
+                        <div class="outer-layer">
+                      </div>
+                  </div>
+                </div>
+                {% block mini-slider %}
+                        <div class="mini-slider">
+                            <a class="top-tags-links">Popular</a>
+                             <a class="top-tags-links top-tags-links-more" href="{% url 'catlog_home' %}">more</a>
+                            <div class="carousel" data-flickity='{ "lazyLoad": true, "wrapAround": true }'>
+                                      <a href="{% url 'flowers' %}">
+                                        <div class="carousel-cell">
+                                          <img class="carousel-cell-image"src="https://lh3.googleusercontent.com/zsbIum8qmN4pzipu0puwC5uHAfjfE4R72zUK0k1P1IiXy787YLvNm4_hY1OjRkmlYSYpZ17X8Kp9TCTPiw1x5HgV9HSkKQOkPZh9A92hwyN3OYsay0ktMHdzgHBn8Y__jbeUm_iq9bg=w2400" alt="tulip" />
+                                            <span class="mini-image-text">flowers<span>
+                                        </div>
+                                      </a>
+                                      <a href="{% url 'art' %}">
+                                            <div class="carousel-cell">
+                                              <img class="carousel-cell-image"src="https://lh3.googleusercontent.com/h-L7c3BX5f3XBcK5Xt9sid4vyfu-EIvBfRX4ZelGp8ZJN-y6GIDfF2GnQX_VV_2pNlGbhXxsO0KTf8UmMLLPjUiCGSRN74VwtMkbNNfmBugSb1Vf2SMGoq_R7PQGpyI0ybS9fM69FIU=w2400" alt="tulip" />
+                                                <span class="mini-image-text">Art<span>
+                                            </div>
+                                    </a>
+                                    <a href="{% url 'nature' %}">
+                                            <div class="carousel-cell">
+                                              <img class="carousel-cell-image"src="https://lh3.googleusercontent.com/wBKu4rvFL10cFq5WPQKk4iLqFjCtvkzwrXBij_-MOfWQqWpqHPj4719D5QfJ4DguDB4gV-mXtMk2OU09jySwXqmqNmfSs4nMb7IB2RBg7u9xn3fqE2dp0_He2clHCxbimh_QjSi-99k=w2400" alt="tulip" />
+                                                <span class="mini-image-text">nature<span>
+                                            </div>
+                                    </a>
+                                    <a href="{% url 'beauty' %}">
+                                            <div class="carousel-cell">
+                                              <img class="carousel-cell-image"src="https://lh3.googleusercontent.com/-0VIrEthJDuAXsTgiuuZBFUEgSwx2NOxhDO77gtQFY4_a3VonvJCC1V3AT8B9DP8rLe9k4a-GJcMGEFfWOmA1rtjPPmFnp3H8QgHEjUE3DhGtC73FhchNuTYrMGkxCqYNfQ_NF0yt-M=w2400" alt="tulip" />
+                                                <span class="mini-image-text">Beauty<span>
+                                            </div>
+                                    </a>
+                                    <a href="{% url 'business' %}">
+                                            <div class="carousel-cell">
+                                              <img class="carousel-cell-image"src="https://lh3.googleusercontent.com/ovBeVCCZ9YqgrUJTeQQwHedZ0TYM5HIuDsJe7WnB38LgS7FeSJG4GzNm_OrC5TztWvnyUJcxXjALOrgpbTy0SEfSuORt4ZhM7DwsK8l0k5A-oMEDlKPkx8R_0W8eT3ivqX41kEwScMc=w2400" alt="tulip" />
+                                                <span class="mini-image-text">Business<span>
+                                            </div>
+                                          </a>
+                                          <a href="{% url 'celebrate' %}">
+                                                <div class="carousel-cell">
+                                                  <img class="carousel-cell-image"src="https://lh3.googleusercontent.com/J51m80g8fL9uAp8BzB-oVlCHiFl0QH9zXCvJAYr6vMtj5KkFUAi3fSVNFsLS5S-8oR7YgkpWYZIguzciHNSP0pBmaaY4wzVUBjibb8mW72SMZ2A8nxxu8YE1QXCWC3VXZLBScnJMHzQ=w2400" alt="tulip" />
+                                                    <span class="mini-image-text">Celebrate<span>
+                                                </div>
+                                        </a>
+                                        <a href="{% url 'landscape' %}">
+                                                <div class="carousel-cell">
+                                                  <img class="carousel-cell-image"src="https://lh3.googleusercontent.com/6NXk5W6k_Go7lgAySl150QO9wyheH2RCunMvzMibosI9KTHlD22pSxu1xgjJzNUe17ovpuYQ7a5nczks5JdxoD65a60yEeVATZtGkluSDpkebiZHe87cZMPcLqQsNhw8Ku8STjwolm0=w2400" alt="tulip" />
+                                                    <span class="mini-image-text">Land<span>
+                                                </div>
+                                        </a>
+                                        <a href="{% url 'work' %}">
+                                                <div class="carousel-cell">
+                                                  <img class="carousel-cell-image"src="https://lh3.googleusercontent.com/mmZ7G-2XbL34xCo0wWg_5XEzYCqnb76FwH7fwCmTsB6Uf2h15aAhGCzHTHrHoZbzZGP7V7N8vjpZ3NLClPB81f41aummWVIlIC7NWMBgONNa5HIaUFZILSoA6-TTLayabR-q9GMUlC8=w2400" alt="tulip" />
+                                                    <span class="mini-image-text">Work<span>
+                                                </div>
+                                        </a>
+                            </div>
+                        </div>
+                {% endblock %}
+              <!--mini-slider-for-catpages-->
+                 {% block cat-mini-slider %}
+                        <div class="mini-slider" id="cat-mini-slider">
+                            <a class="top-tags-links">Popular</a>
+                             <a class="top-tags-links top-tags-links-more"  href="{% url 'catlog_home' %}">more</a>
+                            <div class="carousel" data-flickity='{ "lazyLoad": true, "wrapAround": true }'>
+                                      <a href="{% url 'flowers' %}">
+                                        <div class="carousel-cell">
+                                          <img class="carousel-cell-image"src="https://lh3.googleusercontent.com/zsbIum8qmN4pzipu0puwC5uHAfjfE4R72zUK0k1P1IiXy787YLvNm4_hY1OjRkmlYSYpZ17X8Kp9TCTPiw1x5HgV9HSkKQOkPZh9A92hwyN3OYsay0ktMHdzgHBn8Y__jbeUm_iq9bg=w2400" alt="tulip" />
+                                            <span class="mini-image-text">flowers<span>
+                                        </div>
+                                      </a>
+                                      <a href="{% url 'art' %}">
+                                            <div class="carousel-cell">
+                                              <img class="carousel-cell-image"src="https://lh3.googleusercontent.com/h-L7c3BX5f3XBcK5Xt9sid4vyfu-EIvBfRX4ZelGp8ZJN-y6GIDfF2GnQX_VV_2pNlGbhXxsO0KTf8UmMLLPjUiCGSRN74VwtMkbNNfmBugSb1Vf2SMGoq_R7PQGpyI0ybS9fM69FIU=w2400" alt="tulip" />
+                                                <span class="mini-image-text">Art<span>
+                                            </div>
+                                    </a>
+                                    <a href="{% url 'nature' %}">
+                                            <div class="carousel-cell">
+                                              <img class="carousel-cell-image"src="https://lh3.googleusercontent.com/wBKu4rvFL10cFq5WPQKk4iLqFjCtvkzwrXBij_-MOfWQqWpqHPj4719D5QfJ4DguDB4gV-mXtMk2OU09jySwXqmqNmfSs4nMb7IB2RBg7u9xn3fqE2dp0_He2clHCxbimh_QjSi-99k=w2400" alt="tulip" />
+                                                <span class="mini-image-text">nature<span>
+                                            </div>
+                                    </a>
+                                    <a href="{% url 'beauty' %}">
+                                            <div class="carousel-cell">
+                                              <img class="carousel-cell-image"src="https://lh3.googleusercontent.com/-0VIrEthJDuAXsTgiuuZBFUEgSwx2NOxhDO77gtQFY4_a3VonvJCC1V3AT8B9DP8rLe9k4a-GJcMGEFfWOmA1rtjPPmFnp3H8QgHEjUE3DhGtC73FhchNuTYrMGkxCqYNfQ_NF0yt-M=w2400" alt="tulip" />
+                                                <span class="mini-image-text">Beauty<span>
+                                            </div>
+                                    </a>
+                                    <a href="{% url 'business' %}">
+                                            <div class="carousel-cell">
+                                              <img class="carousel-cell-image"src="https://lh3.googleusercontent.com/ovBeVCCZ9YqgrUJTeQQwHedZ0TYM5HIuDsJe7WnB38LgS7FeSJG4GzNm_OrC5TztWvnyUJcxXjALOrgpbTy0SEfSuORt4ZhM7DwsK8l0k5A-oMEDlKPkx8R_0W8eT3ivqX41kEwScMc=w2400" alt="tulip" />
+                                                <span class="mini-image-text">Business<span>
+                                            </div>
+                                          </a>
+                                          <a href="{% url 'celebrate' %}">
+                                                <div class="carousel-cell">
+                                                  <img class="carousel-cell-image"src="https://lh3.googleusercontent.com/J51m80g8fL9uAp8BzB-oVlCHiFl0QH9zXCvJAYr6vMtj5KkFUAi3fSVNFsLS5S-8oR7YgkpWYZIguzciHNSP0pBmaaY4wzVUBjibb8mW72SMZ2A8nxxu8YE1QXCWC3VXZLBScnJMHzQ=w2400" alt="tulip" />
+                                                    <span class="mini-image-text">Celebrate<span>
+                                                </div>
+                                        </a>
+                                        <a href="{% url 'landscape' %}">
+                                                <div class="carousel-cell">
+                                                  <img class="carousel-cell-image"src="https://lh3.googleusercontent.com/6NXk5W6k_Go7lgAySl150QO9wyheH2RCunMvzMibosI9KTHlD22pSxu1xgjJzNUe17ovpuYQ7a5nczks5JdxoD65a60yEeVATZtGkluSDpkebiZHe87cZMPcLqQsNhw8Ku8STjwolm0=w2400" alt="tulip" />
+                                                    <span class="mini-image-text">Land<span>
+                                                </div>
+                                        </a>
+                                        <a href="{% url 'work' %}">
+                                                <div class="carousel-cell">
+                                                  <img class="carousel-cell-image"src="https://lh3.googleusercontent.com/mmZ7G-2XbL34xCo0wWg_5XEzYCqnb76FwH7fwCmTsB6Uf2h15aAhGCzHTHrHoZbzZGP7V7N8vjpZ3NLClPB81f41aummWVIlIC7NWMBgONNa5HIaUFZILSoA6-TTLayabR-q9GMUlC8=w2400" alt="tulip" />
+                                                    <span class="mini-image-text">Work<span>
+                                                </div>
+                                        </a>
+                            </div>
+                        </div>
+                 {% endblock %}
+              <!--end-->
+              {% endblock %}
+              <!--end-->
+
+
+              <!--images main grid-->
+              {% block images_grid %}
+              {% endblock %}
+              <!--end-->
+
+
+              <footer class="mdl-mini-footer">
+              <div class="mdl-mini-footer__left-section">
+                  <a href="{% url 'home' %}"><div class="mdl-logo-footer">AJAR</div></a>
+                <ul class="mdl-mini-footer__link-list">
+                  <li><a href="#">Help</a></li>
+                  <li><a href="#">Terms of Service</a></li>
+                </ul>
+              </div>
+            </footer>
+   </main>
+
+    </div>
+    <!--footer-->
+
+    <!--end-->
+      <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+      <script src='{% static "js/imagesloaded.pkgd.min.js" %}'></script>
+      <script src='{% static "js/justified.js" %}'></script>
+      <script>
+        var parameters = {
+          gridContainer: '#grid-container',
+          gridItems: '.grid-item',
+          enableImagesLoaded: true,
+        };
+        var grid = new justifiedGrid(parameters);
+		$('body').imagesLoaded( function() {
+   grid.initGrid();
+});
+
+      </script>
+    <!--modal-js-->
+        <script type="text/javascript">
+        $(document).ready(function(e) {
+
+            // live handler
+            lc_lightbox('.elem', {
+                wrap_class: 'lcl_fade_oc',
+                gallery : true,
+                thumb_attr: 'data-lcl-thumb',
+                skin: 'dark',
+                radius: 0,
+                padding	: 0,
+                border_w: 0,
+                fullscreen    : true,
+                socials     : true,
+                download    : true,
+                touchswipe    : true,
+                nav_btn_pos   : 'middle'
+            });
+
+        });
+        </script>
+    <!--end-->
+    </body>
+</html>

@@ -1,0 +1,53 @@
+{% extends 'layout.html'  %}
+<!--slider block-->
+{% block slider %}
+{% block cat-mini-slider %}
+{{ block.super }}
+{% endblock %}
+{% endblock %}
+<!--end-->
+{% block images_grid %}
+<!--modal-->
+<div class="wrapper">
+<div class="container">
+	<div class="content"  id="grid-container">
+          <div class="about-content-wrapper">
+             <h2 class="about-content-name">Health & wellness images</h2>
+         <h4 class="about-content">Find the perfect picture of patients, doctors, healthy lifestyles & diets, vitamins, exercise and more on AJAR.
+         </h4>
+    </div>
+        {% for image in health_url %}
+   		<a class="elem grid-item" href="{{ image.health_1 }}"  data-lcl-thumb="{{ image.health_1 }}">
+        	<img  src={{ image.health_1 }}>
+        </a>
+        {% endfor %}
+   	</div>
+</div>
+<!--endmodal-->
+<!--pagination-->
+                    <div>
+                        <div id="page-container">
+                            <span class="step-links">
+                                {% if health_url.has_previous %}
+                                    <a id="first-page-tooltip" class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect page-buttons" href="?page=1"><i class="material-icons">first_page</i></a>
+                                    <a id="prev-page-tooltip" class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect page-buttons" href="?page={{ health_url.previous_page_number }}"><i class="material-icons">chevron_left</i></a>
+                                {% endif %}
+                                <span class="current">
+                                    Page {{ health_url.number }} of {{ health_url.paginator.num_pages }}.
+                                </span>
+                                {% if health_url.has_next %}
+                                    <a id="next-page-tooltip" class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect page-buttons" href="?page={{ health_url.next_page_number }}"><i class="material-icons">chevron_right</i></a>
+                                    <a  id="last-page-tooltip" class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect page-buttons" href="?page={{ health_url.paginator.num_pages }}"><i class="material-icons">last_page</i></a>
+                                {% endif %}
+                            </span>
+                     </div>
+                    </div>
+                        <!--tooltips-->
+                        <div class="mdl-tooltip mdl-tooltip--left" data-mdl-for="first-page-tooltip">First Page</div>
+                        <div class="mdl-tooltip mdl-tooltip--top" data-mdl-for="prev-page-tooltip"> Previous Page</div>
+                        <div class="mdl-tooltip mdl-tooltip--top" data-mdl-for="next-page-tooltip"> Next Page</div>
+                        <div class="mdl-tooltip mdl-tooltip--right" data-mdl-for="last-page-tooltip"> Last Page</div>
+                        <!--end-->
+    </div>
+<!--endpagination-->
+{% endblock %}
